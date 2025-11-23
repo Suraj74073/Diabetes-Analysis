@@ -1,108 +1,206 @@
-IBM SPSS Modeler Project – README
+📘 IBM SPSS Modeler Project – Diabetes Analysis & Customer Segmentation
 
-📌 Project Title
-
-Diabetes Analysis and Customer Segmentation Using IBM SPSS Modeler
+A complete GitHub‑style README for the SPSS Modeler workflow you created.
 
 
 ---
 
-📖 Overview
+📌 Project Overview
 
-This README explains the SPSS Modeler stream shown in the workflow. It describes each node, its function, and how the overall process works.
+This project uses IBM SPSS Modeler to perform:
+
+Diabetes Prediction (Classification)
+
+Customer Segmentation (optional extension)
+
+
+The workflow includes data import, field type assignment, filtering, partitioning, modeling, and evaluation.
 
 
 ---
 
+📂 Repository Structure
 
-🧩 SPSS Modeler Workflow Explanation
-
-Below is the detailed explanation of every node used in your SPSS Modeler workflow:
-
-1. Data Source Node (Var. File / Excel / CSV)
-
-This node imports the dataset (Diabetes Dataset or Happiness Dataset). It reads all records and fields.
-
-2. Type Node
-
-The Type node is used to assign the correct measurement level to each variable, such as:
-
-Numeric
-
-Categorical
-
-Flag
-
-Continuous / Nominal
+📁 project-folder
+│── 📄 README.md       → Project documentation
+│── 📁 data/           → Dataset files (CSV/Excel)
+│── 📁 screenshots/    → SPSS Modeler workflow images
+│── 📁 exports/        → Model outputs (tables, graphs)
 
 
-It also allows you to set the role for each field like Input, Target, Both, None.
+---
 
-3. Select Node
+🧩 SPSS Modeler Workflow Summary
 
-This node filters the data. You can use conditions like:
+The workflow includes the following nodes:
 
-Outcome = 0 or Outcome = 1
+      1. Data Source Node (Var. File / Excel / CSV)
 
-Or remove missing values.
+Imports dataset with all fields.
 
-4. Partition Node
+      2. Type Node
 
-This node splits the dataset into:
+Assigns correct data types and roles:
 
-Training Data (typically 70%)
+     Input Fields
 
-Testing Data (typically 30%)
+     Target Field (Outcome)
+
+     Continuous / Nominal Levels
 
 
-This helps in model building and evaluating performance.
+     3. Select Node
+
+Filters unnecessary or missing records. Example filter:
+
+   @NOT(@NULL(Glucose)) AND @NOT(@NULL(BMI))
+
+    4. Partition Node
+
+Splits dataset:
+
+                  70% Training
+
+                   30% Testing
+                Used for model evaluation.
 
 5. Modeling Nodes
 
-In the picture, multiple modeling techniques are used:
+Multiple algorithms are applied:
 
-a. C5.0 Decision Tree
+C5.0 Decision Tree
 
-Generates a classification tree model based on input predictors.
+Logistic Regression
 
-b. Logistic Regression
+SVM (Support Vector Machine)
 
-Statistical model used to predict binary outcomes like 0/1.
 
-c. SVM (Support Vector Machine)
-
-A powerful classification method that identifies best separating boundaries.
-
-Each model predicts Outcome.
+Each model predicts the Outcome variable.
 
 6. Analysis Nodes
 
-These nodes evaluate the prediction performance using:
-
-Accuracy
+Evaluates and compares model performance using:
 
 ROC Curve
 
 Confusion Matrix
 
-Model Comparison
+Accuracy Score
+
+Model Summary Reports
 
 
 
 ---
 
-📄 Sample README Code (Markdown Format)
+🧪 Model Evaluation Example
 
-# SPSS Modeler Workflow – Diabetes Prediction
+Model: C5.0 Decision Tree
+Accuracy: 78.4%
+AUC: 0.82
+Confusion Matrix:
+TP: 120 | FP: 30
+FN: 25  | TN: 89
 
-## Steps Used
-1. Load Dataset
-2. Define Field Types
-3. Filter Data with Select Node
-4. Partition into Train/Test
-5. Build Models (C5.0, Logistic Regression, SVM)
-6. Compare Accuracy
-7. Generate Analysis Outputs
+(Your results may differ depending on dataset)
 
-## Field Roles
-- Input: Pregnancies, Glucose,
+
+---
+
+🔧 Dataset Fields
+
+Example fields used:
+
+Pregnancies
+Glucose\ nBloodPressure
+SkinThickness
+Insulin
+BMI
+DiabetesPedigreeFunction
+Age
+Outcome (Target)
+
+
+---
+
+🛠 Setup Instructions
+
+Requirements
+
+IBM SPSS Modeler (any recent version)
+
+Dataset (CSV/Excel)
+
+
+Steps
+
+1. Open SPSS Modeler
+
+
+2. Drag a Var. File node and import dataset
+
+
+3. Apply Type Node to correct field types
+
+
+4. Use Select Node to clean/prepare data
+
+
+5. Apply Partition Node
+
+
+6. Add modeling nodes (C5.0 / Logistic / SVM)
+
+
+7. Add Analysis Node to compare models
+
+
+
+
+---
+
+📊 Result Interpretation
+
+Higher accuracy or AUC means better model.
+Choose the model with:
+
+Highest ROC AUC
+
+Best Confusion Matrix
+
+Lowest Misclassification Rate
+
+
+
+---
+
+📝 Sample README Code Block
+
+# Diabetes Prediction using IBM SPSS Modeler
+This project builds classification models using the PIMA Diabetes dataset.
+
+## Features
+- Data Import
+- Partitioning
+- C5.0 Model
+- Logistic Regression
+- SVM
+- Model Evaluation (Accuracy, ROC, Confusion Matrix)
+
+
+---
+
+🤝 Contributions
+
+Feel free to fork and modify the README or stream.
+
+
+---
+
+📬 Author
+
+Suraj Kumar
+B.Tech CSE (AI & DS) – 5th Semester
+Arka Jain University
+
+
